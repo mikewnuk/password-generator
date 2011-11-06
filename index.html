@@ -1,0 +1,64 @@
+<!-- 
+Based on supergenpass (http://www.supergenpass.com)
+-->
+<html>
+	<head>
+		<title>Password Generator</title>
+		<style>
+			* {margin:0; padding:0}
+			body {padding:15px; background-color:#111; font-family: Helvetica, sans-serif; color:white}
+			#password {
+				font-size:16px;
+				padding:6px;
+				width:100%;
+			}
+			#domains {
+				margin-top:15px;
+				width:100%;
+				border-bottom:1px #333 solid;
+			}
+			#domains li {
+				padding:8px;
+				font-size:14x;
+				background-color:#666;
+				border-top:2px #333 solid;
+				list-style:none;
+
+			}
+			#result {
+				padding: 6px;
+				background: #ADA;
+				font-size: 16px;
+				font-weight: bold;
+				text-align: center;
+				border: solid 1px #696;
+				display:none;
+				margin-top:15px;
+			}
+		</style>
+	</head>
+	<body>
+
+		<input type="password" id="password">
+		<div id="result"></div>	
+		<ul id="domains">
+			<li l="14" d="google.com">Google</li>
+			<li l="10" d="usaa.com">USAA</li>
+			<li l="14" d="facebook.com">Facebook</li>
+			<li l="14" d="twitter.com">Twitter</li>
+			<li l="14" d="amazon.com">Amazon</li>
+			<li l="14" d="rackspacecloud.com">Rackspace Cloud</li>
+			<li l="14" d="chase.com">Chase</li>
+		</ul>
+		<script src="zepto.min.js"></script>
+		<script src="genpass.js"></script>
+		<script>
+			$("#domains li").click(function(e){
+				var l = parseInt($(this).attr("l"));
+				var d = $(this).attr("d");
+				var p = $("#password").val();
+				$("#result").html(makepassword(p,d,l)).show();
+			});
+		</script>
+	</body>
+</html>
