@@ -91,6 +91,7 @@ function gp2_validate_length(Len) {
 
 function gp2_process_uri(URI,DisableTLD) {
 
+
 	URI=URI.toLowerCase();
 	var HostNameIsolator=new RegExp('^(http|https|ftp|ftps|webdav|gopher|rtsp|irc|nntp|pop|imap|smtp)://([^/:]+)');
 	var HostName=URI.match(HostNameIsolator);
@@ -106,9 +107,20 @@ function gp2_process_uri(URI,DisableTLD) {
 	HostNameIsolator=new RegExp('^([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})$');
 	HostName=(HostName.match(HostNameIsolator))?[HostName]:HostName.split('.');
 
-	URI=HostName.join('.');
-
+	if(HostName[2]==null||DisableTLD) {
+		URI=HostName.join('.');
+	} else {
+		URI=HostName[HostName.length-2]+'.'+HostName[HostName.length-1];
+		var TLDList=['co.uk'];
+		for(var i=0; i<TLDList.length; i++) {
+			if(URI==TLDList[i]) {
+				URI=HostName[HostName.length-3]+'.'+URI;
+				break;
+			}
+		}
+	}
 	return URI;
+
 
 }
 

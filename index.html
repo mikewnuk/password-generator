@@ -1,4 +1,5 @@
-<!-- 
+<!DOCTYPE html>
+<!--
 Based on supergenpass (http://www.supergenpass.com)
 -->
 <html>
@@ -12,6 +13,7 @@ Based on supergenpass (http://www.supergenpass.com)
 				font-size:16px;
 				padding:6px;
 				width:100%;
+				text-align:center;
 			}
 			#domains {
 				margin-top:15px;
@@ -35,25 +37,33 @@ Based on supergenpass (http://www.supergenpass.com)
 				border: solid 1px #696;
 				display:none;
 				margin-top:15px;
+				font-family:monospace;
 			}
+			#bookmarklet { margin-top:8px;}
+			#bookmarklet a { font-size:11px; text-decoration:none; color:#000; background-color: #ddd; border:1px #ccc solid; border-radius: 3px; padding:2px}
 		</style>
 	</head>
 	<body>
 
-		<input type="password" id="password">
+		<input type="password"  pattern="[0-9]*" id="password">
 		<div id="result"></div>	
 		<ul id="domains">
 			<li l="14" d="google.com">Google</li>
-			<li l="10" d="usaa.com">USAA</li>
+			<li l="14" d="amazon.com">Amazon</li>
+			<li l="14" d="nytimes.com">NYTimes</li>
+			<li l="12" d="usaa.com">USAA</li>
 			<li l="14" d="facebook.com">Facebook</li>
 			<li l="14" d="twitter.com">Twitter</li>
-			<li l="14" d="amazon.com">Amazon</li>
 			<li l="14" d="rackspacecloud.com">Rackspace Cloud</li>
 			<li l="14" d="chase.com">Chase</li>
+			<li l="14" d="citi.com">Citi</li>
+			<li l="14" d="mint.com">Mint</li>
+			<li l="14" d="venmo.com">Venmo</li>
+			<li l="14" d="delicious.com">Delicious</li>
 		</ul>
 		<script src="zepto.min.js"></script>
 		<script src="genpass.js"></script>
-		<script>
+		<script>			
 			$("#domains li").click(function(e){
 				var l = parseInt($(this).attr("l"));
 				var d = $(this).attr("d");
@@ -61,5 +71,8 @@ Based on supergenpass (http://www.supergenpass.com)
 				$("#result").html(makepassword(p,d,l)).show();
 			});
 		</script>
+		<div id="bookmarklet">
+		<a href="javascript:(function() {document.body.onclick=function(){ document.body.removeChild(document.getElementById('pass_gen'))}; var d = document.createElement('iframe');d.id='pass_gen'; d.setAttribute('style', 'border:2px #333 solid; width:180px; height:36px;position:fixed; left:5px; top:5px;float:left;z-index:999999;background-color:#111');d.src='http://mikewnuk.com/pass/bookmarklet.html#' + window.location.host;document.body.insertBefore(d, document.body.childNodes[0]);})()">Pass</a>
+		</div>
 	</body>
 </html>

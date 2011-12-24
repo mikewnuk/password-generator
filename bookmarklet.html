@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Bookmarklet</title>
+		<style>
+			* {margin:0; padding:0}
+			body {padding:4px; background-color:#111; font-family: Helvetica, sans-serif; color:white}
+			#password {
+				font-size:12px;
+				padding:6px 6px 5px;
+				width:32px;
+				float:left;
+				margin-right:6px;
+				border:1px #ccc solid;
+				text-align:center;
+			}
+			#result {
+				padding: 6px;
+				background: #ADA;
+				font-size: 12px;
+				font-weight: bold;
+				text-align: center;
+				border: solid 1px #696;
+				font-family:monospace;
+				width:106px;
+				float:left;
+				color:#ffffff;
+			}
+			#input_wrap {
+				width:auto;
+			}
+			#form {
+				-webkit-transition: opacity 0.4s linear; 
+				opacity: 0;
+			}
+			#form.visible {
+				opacity: 1.0;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="form" class="">
+			<input id="password" type="password" size="4"  onkeydown="javascript:generate()">
+			<input disabled id="result" type="text">
+		</div>
+		<script src="zepto.min.js"></script>
+		<script src="genpass.js"></script>
+		<script>
+			function generate() {
+				if (event.keyCode == 13) {
+					var d =  gp2_process_uri(window.location.hash.replace("#", ""), false);
+					var l = 14
+					if (d.search("usaa.com") != -1) {
+						var l = 12;
+					}
+					var p = $("#password").val();
+					$("#result").val(makepassword(p,d,l))
+				}
+			}
+			$(document).ready(function() {
+				$("#form").addClass("visible");
+			});
+		</script>
+	</body>
+	
+</html>	
