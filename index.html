@@ -58,9 +58,9 @@
 			d.id='passgen';
 			d.setAttribute('style', 'margin:0px; border:2px #333 solid; width:180px; height:36px;position:fixed; left:5px; top:5px;float:left;z-index:999999;background-color:#111');
 			
-			d.innerHTML = '<div id="form" id="passgen_form" style="margin:0px; padding:4px; background-color:#111; font-family: Helvetica, sans-serif; color:white"><input id="passgen_password" type="password" size="4" style="margin:0px; font-size:12px;padding:6px 6px 5px;width:32px;float:left;margin-right:6px;border:1px #ccc solid;text-align:center;"  onkeydown=""><input disabled id="passgen_result" style="margin:0px; padding: 6px;background: #ADA;font-size: 12px;font-weight: bold;text-align: center;border: solid 1px #696;font-family:monospace;width:106px;float:left;color:#ffffff;" type="text"></div>';
+			d.innerHTML = '<div id="form" id="passgen_form" style="margin:0px; padding:4px; background-color:#111; font-family: Helvetica, sans-serif; color:white"><input id="passgen_password" type="password" size="4" style="margin:0px; font-size:12px;line-height:12px;padding:6px 6px 5px;width:32px;border-radius:0;float:left;margin-right:6px;border:1px #ccc solid;text-align:center;"  onkeydown=""><input disabled id="passgen_result" style="line-height:12px;border-radius:0;margin:0px; padding: 6px;background: #ADA;font-size: 12px;font-weight: bold;text-align: center;border: solid 1px #696;font-family:monospace;width:106px;float:left;color:#ffffff;" type="text"></div>';
 			document.body.insertBefore(d, document.body.childNodes[0]);
-			
+			document.getElementById("passgen_password").focus();
 			document.getElementById('passgen_password').onkeydown = function(e) {
 				if (e.keyCode == 13) {
 					var d =  gp2_process_uri(window.location.host, false);
@@ -73,7 +73,9 @@
 					document.getElementById("passgen_result").value = generated;
 					var passwordFields = document.querySelectorAll("input[type=password]");
 					for (var i = 0;i < passwordFields.length; i++) {
-						passwordFields[i].value = generated;
+						if (passwordFields[i].id != "passgen_password") {
+							passwordFields[i].value = generated;
+						}
 					}
 				}
 			}
@@ -215,7 +217,7 @@
 				var a = document.createElement('a');
 				a.id = "bookmarklet";
 				a.href = url;
-				var text = document.createTextNode('passwd');
+				var text = document.createTextNode('PWD');
 				a.appendChild(text);
 				container.appendChild(a);
 			}
