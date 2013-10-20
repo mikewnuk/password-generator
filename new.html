@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Password</title>
+
+    </head>
+    <body>
+
+
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <script type="text/template" id="cgcg-pass-template">
+            <style>
+                /* {margin:0;padding:0} */
+                #cgcg-pass {
+                    width: 100%;
+                    height: 65px;
+                    width: 100%;
+                    position: fixed;
+                    top: 0px;
+                    background-color: rgba(0,0,0,.7);
+                    margin:0px;
+                    padding:0px;
+                    left:0px;
+                    overflow:hidden;
+                    color:white;
+                    font-family:Helvetica, sans-serif;
+                    font-weight:normal;
+                }
+                #cgcg-pass-pin {
+                    position:absolute;
+                    left:-9000px;
+                }
+                #cgcg-pass-button:hover {
+                    background-color:#00A414;
+                }
+                #cgcg-pass-button {
+                    padding:10px 40px;
+                    font-size: 20px;
+                    background-color:#079A18;
+
+                    border:0px;
+                    border-radius: 6px;
+                    color:white;
+                    cursor:pointer;
+                    margin:10px 10px;
+                }
+                #cgcg-pass-indicator {
+                    position:absolute;
+                    font-size: 24px;
+                    color: #ddd;
+                    padding: 17px;
+                }
+                #cgcg-pass-domain:focus {
+                    width: 140px;
+                    outline:none;
+                    border:1px #666 solid;
+                    background-color: #666;
+                    text-align:left;
+                }
+                #cgcg-pass-domain {
+                    position: absolute;
+                    right: 0px;
+                    top: 0px;
+                    width: 100px;
+                    margin: 13px 20px;
+                    font-size: 14px;
+                    border:1px transparent solid;
+                    background-color: #4B4B4B;
+                    color:#ddd;
+                    padding: 10px 5px;
+                    text-align:right;
+                    border-radius:0px;
+                }
+            </style>
+            <input type="password" pattern="[0-9]*" id="cgcg-pass-pin">
+            <button id="cgcg-pass-button">Pass</button>
+            <span id="cgcg-pass-indicator"></span>
+            <div id="cgcg-pass-result"></div>
+            <input type="url" id="cgcg-pass-domain">
+        </script>
+        <h1>pass</h1>
+        <p>Passphrase  <br><input type="password" id="passphrase"></p>
+        <input type="password" id="passphrase2"></p>
+        <button id="create-bookmarklet-button">Create Bookmarklet</button>
+        <div id="bookmarklet-output"></div>
+
+        <script src="pass.js"></script>
+
+
+    </body>
+</html>

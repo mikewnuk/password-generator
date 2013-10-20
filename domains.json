@@ -1,0 +1,36 @@
+var domains = {
+    "default": {
+        "name": "Default", "min": 14, "max:": 24,    
+    },
+    "google.com": {
+        "name": "Google", "min": 14, "max:": 24,
+    },
+    "chase.com": {
+        "name": "Chase", "min": 14, "max:": 24,
+    },
+    "nytimes.com": {
+        "name": "New York Times", "min": 14, "max:": 24,
+    },
+    "amazon.com": {
+        "name": "Amazon", "min": 14, "max:": 24,    
+    },
+    "usaa.com": {
+        "name": "USAA", "min": 12, "max:": 24,    
+    },
+    "facebook.com": {
+        "name": "Facebook", "min": 14, "max:": 24,    
+    },
+    "twitter.com": {
+        "name": "Twitter", "min": 14, "max:": 24,    
+    },
+    "rackspacecloud.com": {
+        "name": "Rackspace Cloud", "min": 14, "max:": 24,    
+    },
+    "venmo.com": {
+        "name": "Venmo", "min": 14, "max:": 24,    
+    },
+    "citi.com": {
+        "name": "Citi", "min": 14, "max:": 24,    
+    },
+
+}
